@@ -16,6 +16,30 @@ public class Validator {
         if (password.length() >= 8) {
             passedRules++;
         }
+
+        //Passes a third rule
+        //password should have at least 1 special characters
+        //!,@,#,$,%,^,&,*,(,)
+        if (password.indexOf('!') !=-1 || password.indexOf('@') != -1
+                || password.indexOf('#') != -1 ||password.indexOf('$') != -1
+                || password.indexOf('%') != -1 || password.indexOf('^') != -1
+                || password.indexOf('&') != -1 || password.indexOf('*') != -1
+                || password.indexOf('(') != -1 || password.indexOf(')') != -1) {
+            passedRules++;
+        }
+
+        //Passes fourth rule
+        //password should have at least 1 digit
+        if (password.matches(".*[0-9].*")){
+            passedRules++;
+        }
+
+        //Passes 5th rule
+        //Password should have at least 1 upper case letter
+        if (password.matches(".*[A-Z].*")){
+            passedRules++;
+        }
+
         return passedRules;
     }
 }

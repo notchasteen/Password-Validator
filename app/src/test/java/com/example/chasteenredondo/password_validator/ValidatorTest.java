@@ -22,7 +22,7 @@ public class ValidatorTest {
     @Test
     //password should not be password
     public void NotPassword() {
-        assertEquals(1, check.validate("Password"));
+        assertEquals(2, check.validate("Password"));
     }
 
     @Test
@@ -30,4 +30,23 @@ public class ValidatorTest {
     public void TwoRule() {
         assertEquals(2, check.validate("abcdefghi"));
     }
+    @Test
+    //Passes if it has special chars
+    public void SpecialChars(){
+        assertEquals(3, check.validate("@bcdefghi"));
+        assertEquals(3, check.validate("!@bcdefg^"));
+    }
+
+    @Test
+    //Passes if it has at least one digit
+    public void digit(){
+        assertEquals(4, check.validate("1@b33defgh"));
+    }
+
+    @Test
+    //Passes if password passes all the 5 rules
+    public void strongPass(){
+        assertEquals(5, check.validate("1@bcDefGhi"));
+    }
+
 }
